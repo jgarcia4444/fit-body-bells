@@ -1,12 +1,23 @@
 
-import Header from "./components/Header";
-import About from "./components/About";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
+
+import Questionnaire from "./Pages/Questionnaire";
+import Home from "./Pages/Home";
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <About />
+      <Router>
+        <Routes>
+          <Route path="/info-form" element={<Questionnaire/>}/>
+          <Route path="/" element={<Home />}/>
+        </Routes>
+      </Router>
     </div>
   );
 }
