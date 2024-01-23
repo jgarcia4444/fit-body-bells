@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import InformationPrompt from '../../components/Questionnaire/InformationPrompt';
 
 const Questionnaire = () => {
 
@@ -90,10 +91,12 @@ const Questionnaire = () => {
         }
     ]
 
+    const questionnaireInputs = ["NAME", "AGE", "CONTACT", "TRAINER", "DURATION", "TIMES_PER_WEEK", "FOOD", "IMPROVE", "GOALS", "STRUGGLES"];
+
     return (
         <div className="w-screen h-screen flex flex-col items-center justify-center bg-black text-white">
             <h1 className="text-3xl ">Starter Questionnaire</h1>
-            <QuestionCard />
+            <InformationPrompt promptType={""} />
         </div>
     )
 }
