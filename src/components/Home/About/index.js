@@ -12,14 +12,14 @@ const About = () => {
         return aboutInfo.map((aboutDetails) => {
             return (
                 <div className="bg-black px-4 py-2 w-96 h-96 overflow-y-auto shadow-lg rounded-lg flex flex-col items-center justify-center">
-                    <p className="text-white text-xl">{aboutDetails}</p>
+                    <p className="text-white text-lg">{aboutDetails}</p>
                 </div>
             )
         })
     };
 
     return (
-        <div className="flex flex-row flex-wrap items-center justify-around py-8">
+        <div className="flex flex-row flex-wrap items-center justify-around pt-4 pb-8">
             {renderAboutSections()}
             <div className="w-full flex flex-row items-cente justify-center mt-8">
                 <p className="text-4xl">Let's Get Strong AF</p>

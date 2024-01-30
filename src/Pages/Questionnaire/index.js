@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import InformationPrompt from '../../components/Questionnaire/InformationPrompt';
+import QuestionnaireActionButtons from '../../components/Questionnaire/QuestionnaireActionButtons';
 
 const Questionnaire = () => {
 
@@ -89,14 +90,29 @@ const Questionnaire = () => {
                 {label: "", placeholder: "" , icon: "", value: "", type: ""}
             ]
         }
-    ]
+    ];
 
     const questionnaireInputs = ["NAME", "AGE", "CONTACT", "TRAINER", "DURATION", "TIMES_PER_WEEK", "FOOD", "IMPROVE", "GOALS", "STRUGGLES"];
 
+    const handleNextPress = () => {
+        let nextIndex = questionIndex + 1;
+        setQuestionIndex(nextIndex);
+    };
+
+    const handlePreviousPress = () => {
+        let previousIndex = questionIndex - 1;
+        setQuestionIndex(previousIndex);
+    }
+
     return (
         <div className="w-screen h-screen flex flex-col items-center justify-center bg-black text-white">
-            <h1 className="text-3xl ">Starter Questionnaire</h1>
-            <InformationPrompt promptType={""} />
+            <div className="w-1/2">
+                <h1 className="text-3xl ">Starter Questionnaire</h1>
+            </div>
+            <div className="w-1/2">
+                <InformationPrompt promptType={questionnaireInputs[questionIndex]} />
+                <QuestionnaireActionButtons nextPress={handleNextPress} previousPress={handlePreviousPress}  />
+            </div>
         </div>
     )
 }
