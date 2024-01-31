@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { FiUser, FiCalendar, FiInstagram, FiPhone } from 'react-icons/fi';
 
 import TextInput from '../../../shared/inputs/TextInput';
+import RadioInput from '../../../shared/inputs/RadioInput';
 
 import updateFName from '../../../redux/actions/questions/updateFName';
 import updateLName from '../../../redux/actions/questions/updateLName';
@@ -32,7 +33,7 @@ const InformationPrompt = ({promptType, questions, updateLName, updateFName, upd
     );
 
     const agePrompt = (
-        <div className="flex flex-row border-b-2 border-white pt-1 px-1">
+        <div className={inputWrapperStyle}>
             <FiCalendar color={iconColor} size={20} />
             <input className="bg-transparent ml-2" placeholder='Age' type="number" value={age} onChange={val => updateAge(val.target.value)}/>
         </div>
@@ -43,12 +44,19 @@ const InformationPrompt = ({promptType, questions, updateLName, updateFName, upd
             <TextInput icon={<FiPhone color={iconColor} size={iconSize} />} label="Phone" value={phone} changeFunc={val => (val.target.value)} placeholder={"Phone Number"} />
             <TextInput icon={<FiInstagram color={iconColor} size={iconSize} />} label="Instagram" value={instagramUsername} changeFunc={val => (val.target.value)} placeholder={"Instagram Username"} />
         </div>
+    );
+
+    const trainerPrompt = (
+        <div className="flex flex-row w-full justify-evenly">
+            <RadioInput label="Have you worked with a trainer or coach before?" />
+        </div>
     )
 
     const promptCypher = {
         "NAME": namePrompts,
         "AGE": agePrompt,
         "CONTACT": contactPrompts,
+        "TRAINER": trainerPrompt,
     };
 
     

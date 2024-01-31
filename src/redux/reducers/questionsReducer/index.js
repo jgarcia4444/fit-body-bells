@@ -9,6 +9,7 @@ const initialState = {
         phone: "",
         instagramUsername: ""
     },
+    hasTrainerBefore: undefined,
     trainerDuration: {
         timeUnit: "",
         duration: 0,
@@ -24,6 +25,11 @@ const initialState = {
 const questionsReducer = (state=initialState, action) => {
 
     switch(action.type) {
+        case "UPDATE_HAS_TRAINER":
+            return {
+                ...state,
+                hasTrainerBefore: action.valueToSet,
+            }
         case "UPDATE_AGE":
             return {
                 ...state,
