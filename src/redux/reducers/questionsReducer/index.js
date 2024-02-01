@@ -25,6 +25,11 @@ const initialState = {
 const questionsReducer = (state=initialState, action) => {
 
     switch(action.type) {
+        case "UPDATE_SESSIONS_PER_WEEK":
+            return {
+                ...state,
+                sessionsPerWeek: action.newValue,
+            }
         case "UPDATE_DURATION":
             return {
                 ...state,

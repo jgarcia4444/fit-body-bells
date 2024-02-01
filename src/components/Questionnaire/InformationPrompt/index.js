@@ -5,24 +5,26 @@ import { FiUser, FiCalendar, FiInstagram, FiPhone } from 'react-icons/fi';
 
 import TextInput from '../../../shared/inputs/TextInput';
 import RadioInput from '../../../shared/inputs/RadioInput';
+import SelectInput from '../../../shared/inputs/SelectInput';
 
 import updateFName from '../../../redux/actions/questions/updateFName';
 import updateLName from '../../../redux/actions/questions/updateLName';
 import updateAge from '../../../redux/actions/questions/updateAge';
 import updateDuration from '../../../redux/actions/questions/updateDuration';
+import updateSessionsPerWeek from '../../../redux/actions/questions/updateSessionsPerWeek';
 
-const InformationPrompt = ({promptType, questions, updateLName, updateFName, updateAge, updateDuration}) => {
+const InformationPrompt = ({promptType, questions, updateLName, updateFName, updateAge, updateDuration, updateSessionsPerWeek}) => {
 
     const iconColor = "#fff";
     const iconSize= 20;
 
-    const {name, age, contact, trainerDuration} = questions;
+    const {name, age, contact, trainerDuration, sessionsPerWeek} = questions;
 
     const questionnaireInputs = ["NAME", "AGE", "CONTACT", "TRAINER", "DURATION", "TIMES_PER_WEEK", "FOOD", "IMPROVE", "GOALS", "STRUGGLES"];
 
     const {fName, lName} = name;
     const {phone, instagramUsername} = contact;
-    const {duration, timeUnit} = trainerDuration
+    const {duration, timeUnit} = trainerDuration;
 
     const inputWrapperStyle = "flex flex-row border-b-2 border-white pt-1 px-1";
 
@@ -64,12 +66,20 @@ const InformationPrompt = ({promptType, questions, updateLName, updateFName, upd
         </div>
     )
 
+    const timesPerWeekPrompt = (
+        <div className={inputWrapperStyle}>
+            <FiCalendar color={iconColor} size={iconSize} />
+            <input className="bg-transparent ml-2" type="number" value={sessionsPerWeek} onChange={val => updateSessionsPerWeek(val.target.value)} />
+        </div>
+    )
+
     const promptCypher = {
         "NAME": namePrompts,
         "AGE": agePrompt,
         "CONTACT": contactPrompts,
         "TRAINER": trainerPrompt,
         "DURATION": durationPrompts,
+        "TIMES_PER_WEEK": timesPerWeekPrompt,
     };
 
     
@@ -98,6 +108,7 @@ const mapDispatchToProps = dispatch => {
         updateLName: (newVal) => dispatch(updateLName(newVal)),
         updateAge: newVal => dispatch(updateAge(newVal)),
         updateDuration: newVal => dispatch(updateDuration(newVal)),
+        updateSessionsPerWeek: newVal => dispatch(updateSessionsPerWeek(newVal)),
     }
 }
 
