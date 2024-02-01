@@ -9,18 +9,20 @@ import RadioInput from '../../../shared/inputs/RadioInput';
 import updateFName from '../../../redux/actions/questions/updateFName';
 import updateLName from '../../../redux/actions/questions/updateLName';
 import updateAge from '../../../redux/actions/questions/updateAge';
+import updateDuration from '../../../redux/actions/questions/updateDuration';
 
-const InformationPrompt = ({promptType, questions, updateLName, updateFName, updateAge}) => {
+const InformationPrompt = ({promptType, questions, updateLName, updateFName, updateAge, updateDuration}) => {
 
     const iconColor = "#fff";
     const iconSize= 20;
 
-    const {name, age, contact} = questions;
+    const {name, age, contact, trainerDuration} = questions;
 
     const questionnaireInputs = ["NAME", "AGE", "CONTACT", "TRAINER", "DURATION", "TIMES_PER_WEEK", "FOOD", "IMPROVE", "GOALS", "STRUGGLES"];
 
     const {fName, lName} = name;
     const {phone, instagramUsername} = contact;
+    const {duration, timeUnit} = trainerDuration
 
     const inputWrapperStyle = "flex flex-row border-b-2 border-white pt-1 px-1";
 
@@ -52,11 +54,22 @@ const InformationPrompt = ({promptType, questions, updateLName, updateFName, upd
         </div>
     )
 
+    const durationPrompts = (
+        <div className="flex flex-row w-full justify-evenly">
+            <SelectInput options={["Weeks", "Months", "Years"]} />
+            <div className={inputWrapperStyle}>
+                <FiCalendar color={iconColor} size={iconSize} />
+                <input className="bg-transparent ml-2" placeholder='Duration' type="number" value={duration} onChange={val => updateDuration(val.target.value)}/>
+            </div>
+        </div>
+    )
+
     const promptCypher = {
         "NAME": namePrompts,
         "AGE": agePrompt,
         "CONTACT": contactPrompts,
         "TRAINER": trainerPrompt,
+        "DURATION": durationPrompts,
     };
 
     
@@ -84,6 +97,7 @@ const mapDispatchToProps = dispatch => {
         updateFName: (newVal) => dispatch(updateFName(newVal)),
         updateLName: (newVal) => dispatch(updateLName(newVal)),
         updateAge: newVal => dispatch(updateAge(newVal)),
+        updateDuration: newVal => dispatch(updateDuration(newVal)),
     }
 }
 

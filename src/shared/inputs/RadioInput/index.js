@@ -13,11 +13,11 @@ const RadioInput = ({label, updateHasTrainer}) => {
             <div className="flex flex-row gap-4">
                 <div className={radioRowStyle}>
                     <label className="mr-2" htmlFor="Yes">Yes</label>
-                    <input className={radioButtonStyle} type="radio" name="Yes" id="" onClick={() => updateHasTrainer(true)} />
+                    <input className={radioButtonStyle} type="radio" name="trainer" id="" onClick={() => updateHasTrainer(true)} value={true} />
                 </div>
                 <div className={radioRowStyle}>
                     <label className="mr-2" htmlFor="No">No</label>
-                    <input className={radioButtonStyle} type="radio" name="No" id="" onClick={() => updateHasTrainer(false)} />
+                    <input className={radioButtonStyle} type="radio" name="trainer" id="" onClick={() => updateHasTrainer(false)} value={false} />
                 </div>
             </div>
         </div>

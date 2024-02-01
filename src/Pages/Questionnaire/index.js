@@ -17,7 +17,7 @@ const Questionnaire = ({questions}) => {
 
     const handleNextPress = () => {
         let nextIndex = questionIndex;
-        if (questionIndex === 3 &&  hasTrainerBefore === false) {
+        if (questionIndex === 3 &&  (hasTrainerBefore === false || hasTrainerBefore === undefined)) {
             nextIndex = nextIndex + 2;
         } else {
             nextIndex = nextIndex + 1;

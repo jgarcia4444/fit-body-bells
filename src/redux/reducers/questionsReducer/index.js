@@ -25,6 +25,14 @@ const initialState = {
 const questionsReducer = (state=initialState, action) => {
 
     switch(action.type) {
+        case "UPDATE_DURATION":
+            return {
+                ...state,
+                trainerDuration: {
+                    ...state.trainerDuration,
+                    duration: action.newValue,
+                }
+            }
         case "UPDATE_HAS_TRAINER":
             return {
                 ...state,
