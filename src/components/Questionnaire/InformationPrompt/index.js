@@ -13,7 +13,7 @@ import updateAge from '../../../redux/actions/questions/updateAge';
 import updateDuration from '../../../redux/actions/questions/updateDuration';
 import updateSessionsPerWeek from '../../../redux/actions/questions/updateSessionsPerWeek';
 
-const InformationPrompt = ({promptType, questions, updateLName, updateFName, updateAge, updateDuration, updateSessionsPerWeek}) => {
+const InformationPrompt = ({promptType, questions, updateLName, updateFName, updateAge, updateDuration, updateSessionsPerWeek, updateFoodRelation}) => {
 
     const iconColor = "#fff";
     const iconSize= 20;
@@ -78,8 +78,8 @@ const InformationPrompt = ({promptType, questions, updateLName, updateFName, upd
             <TextInput 
                 icon={<FiSmile color={iconColor} size={iconSize} />}
                 label="What's your relationship with food?" 
-                value={}
-                changeFunc={}
+                value={foodRelation}
+                changeFunc={val => updateFoodRelation(val.target.value)}
             />
         </div>
     )
@@ -121,6 +121,7 @@ const mapDispatchToProps = dispatch => {
         updateAge: newVal => dispatch(updateAge(newVal)),
         updateDuration: newVal => dispatch(updateDuration(newVal)),
         updateSessionsPerWeek: newVal => dispatch(updateSessionsPerWeek(newVal)),
+        updateFoodRelation: val => dispatch(updateFoodRelation(val))
     }
 }
 
