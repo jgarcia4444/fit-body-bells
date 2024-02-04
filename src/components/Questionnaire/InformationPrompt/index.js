@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { FiUser, FiCalendar, FiInstagram, FiPhone } from 'react-icons/fi';
+import { FiUser, FiCalendar, FiInstagram, FiPhone, FiSmile } from 'react-icons/fi';
 
 import TextInput from '../../../shared/inputs/TextInput';
 import RadioInput from '../../../shared/inputs/RadioInput';
@@ -18,7 +18,7 @@ const InformationPrompt = ({promptType, questions, updateLName, updateFName, upd
     const iconColor = "#fff";
     const iconSize= 20;
 
-    const {name, age, contact, trainerDuration, sessionsPerWeek} = questions;
+    const {name, age, contact, trainerDuration, sessionsPerWeek, foodRelation} = questions;
 
     const questionnaireInputs = ["NAME", "AGE", "CONTACT", "TRAINER", "DURATION", "TIMES_PER_WEEK", "FOOD", "IMPROVE", "GOALS", "STRUGGLES"];
 
@@ -71,6 +71,17 @@ const InformationPrompt = ({promptType, questions, updateLName, updateFName, upd
             <FiCalendar color={iconColor} size={iconSize} />
             <input className="bg-transparent ml-2" type="number" value={sessionsPerWeek} onChange={val => updateSessionsPerWeek(val.target.value)} />
         </div>
+    );
+
+    const foodPrompt = (
+        <div className={inputWrapperStyle}>
+            <TextInput 
+                icon={<FiSmile color={iconColor} size={iconSize} />}
+                label="What's your relationship with food?" 
+                value={}
+                changeFunc={}
+            />
+        </div>
     )
 
     const promptCypher = {
@@ -80,6 +91,7 @@ const InformationPrompt = ({promptType, questions, updateLName, updateFName, upd
         "TRAINER": trainerPrompt,
         "DURATION": durationPrompts,
         "TIMES_PER_WEEK": timesPerWeekPrompt,
+        "FOOD": foodPrompt,
     };
 
     
