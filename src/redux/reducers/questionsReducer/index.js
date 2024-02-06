@@ -25,6 +25,32 @@ const initialState = {
 const questionsReducer = (state=initialState, action) => {
 
     switch(action.type) {
+        case "UPDATE_IMPROVEMENT":
+            return {
+                ...state,
+                areasOfImprovement: action.newVal,
+            }
+        case "UPDATE_FOOD_RELATION":
+            return {
+                ...state,
+                foodRelation: action.newVal,
+            }
+        case "UPDATE_PHONE":
+            return {
+                ...state,
+                contact: {
+                    ...state.contact,
+                    phone: action.newVal
+                }
+            }
+        case "UPDATE_INSTAGRAM":
+            return {
+                ...state,
+                contact: {
+                    ...state.contact,
+                    instagramUsername: action.newVal
+                }
+            }
         case "UPDATE_SESSIONS_PER_WEEK":
             return {
                 ...state,
@@ -56,7 +82,7 @@ const questionsReducer = (state=initialState, action) => {
                     fName: action.newValue,
                 }
             }
-        case "UPDATE_LNAME":
+        case "UPDATE_L_NAME":
             return {
                 ...state,
                 name: {

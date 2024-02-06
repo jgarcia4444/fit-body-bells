@@ -12,13 +12,17 @@ import updateLName from '../../../redux/actions/questions/updateLName';
 import updateAge from '../../../redux/actions/questions/updateAge';
 import updateDuration from '../../../redux/actions/questions/updateDuration';
 import updateSessionsPerWeek from '../../../redux/actions/questions/updateSessionsPerWeek';
+import updateFoodRelation from '../../../redux/actions/questions/updateFoodRelation';
+import updatePhone from '../../../redux/actions/questions/updatePhone';
+import updateInstagram from '../../../redux/actions/questions/updateInstagram';
+import updateImprovement from '../../../redux/actions/questions/updateImprovement';
 
-const InformationPrompt = ({promptType, questions, updateLName, updateFName, updateAge, updateDuration, updateSessionsPerWeek, updateFoodRelation}) => {
+const InformationPrompt = ({promptType, questions, updateLName, updateFName, updateAge, updateDuration, updateSessionsPerWeek, updateFoodRelation, updateInstagram, updatePhone, updateImprovement}) => {
 
     const iconColor = "#fff";
     const iconSize= 20;
 
-    const {name, age, contact, trainerDuration, sessionsPerWeek, foodRelation} = questions;
+    const {name, age, contact, trainerDuration, sessionsPerWeek, foodRelation, areasOfImprovement} = questions;
 
     const questionnaireInputs = ["NAME", "AGE", "CONTACT", "TRAINER", "DURATION", "TIMES_PER_WEEK", "FOOD", "IMPROVE", "GOALS", "STRUGGLES"];
 
@@ -45,8 +49,8 @@ const InformationPrompt = ({promptType, questions, updateLName, updateFName, upd
 
     const contactPrompts = (
         <div className="flex flex-row w-full justify-evenly">
-            <TextInput icon={<FiPhone color={iconColor} size={iconSize} />} label="Phone" value={phone} changeFunc={val => (val.target.value)} placeholder={"Phone Number"} />
-            <TextInput icon={<FiInstagram color={iconColor} size={iconSize} />} label="Instagram" value={instagramUsername} changeFunc={val => (val.target.value)} placeholder={"Instagram Username"} />
+            <TextInput icon={<FiPhone color={iconColor} size={iconSize} />} label="Phone" value={phone} changeFunc={val => updatePhone(val.target.value)} placeholder={"Phone Number"} />
+            <TextInput icon={<FiInstagram color={iconColor} size={iconSize} />} label="Instagram" value={instagramUsername} changeFunc={val => updateInstagram(val.target.value)} placeholder={"Instagram Username"} />
         </div>
     );
 
@@ -74,12 +78,23 @@ const InformationPrompt = ({promptType, questions, updateLName, updateFName, upd
     );
 
     const foodPrompt = (
-        <div className={inputWrapperStyle}>
+        <div className={`flex flex-row w-full justify-evenly`}>
             <TextInput 
                 icon={<FiSmile color={iconColor} size={iconSize} />}
                 label="What's your relationship with food?" 
                 value={foodRelation}
                 changeFunc={val => updateFoodRelation(val.target.value)}
+            />
+        </div>
+    );
+
+    const improvePrompt = (
+        <div className="flex flex-row w-full justify-evenly">
+            <TextInput 
+                icon={<FiUser color={iconColor} size={iconSize} />}
+                label=""
+                value={areasOfImprovement}
+                changeFunc={val => updateImprovement(val.target.value)}
             />
         </div>
     )
@@ -92,6 +107,7 @@ const InformationPrompt = ({promptType, questions, updateLName, updateFName, upd
         "DURATION": durationPrompts,
         "TIMES_PER_WEEK": timesPerWeekPrompt,
         "FOOD": foodPrompt,
+        "IMPROVE": improvePrompt,
     };
 
     
@@ -121,7 +137,10 @@ const mapDispatchToProps = dispatch => {
         updateAge: newVal => dispatch(updateAge(newVal)),
         updateDuration: newVal => dispatch(updateDuration(newVal)),
         updateSessionsPerWeek: newVal => dispatch(updateSessionsPerWeek(newVal)),
-        updateFoodRelation: val => dispatch(updateFoodRelation(val))
+        updateFoodRelation: val => dispatch(updateFoodRelation(val)),
+        updateInstagram: val => dispatch(updateInstagram(val)),
+        updatePhone: val => dispatch(updatePhone(val)),
+        updateImprovement: val => dispatch(updateImprovement(val)),
     }
 }
 
