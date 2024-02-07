@@ -17,17 +17,24 @@ const Questionnaire = ({questions}) => {
 
     const handleNextPress = () => {
         let nextIndex = questionIndex;
-        if (questionIndex === 3 &&  (hasTrainerBefore === false || hasTrainerBefore === undefined)) {
-            nextIndex = nextIndex + 2;
+        if (nextIndex !== questionnaireInputs.length - 1) {
+            if (questionIndex === 3 &&  (hasTrainerBefore === false || hasTrainerBefore === undefined)) {
+                nextIndex = nextIndex + 2;
+            } else {
+                nextIndex = nextIndex + 1;
+            }
+            setQuestionIndex(nextIndex);
         } else {
-            nextIndex = nextIndex + 1;
+            // submit the form 
+            // change the next button icon to a submit button.
         }
-        setQuestionIndex(nextIndex);
     };
 
     const handlePreviousPress = () => {
-        let previousIndex = questionIndex - 1;
-        setQuestionIndex(previousIndex);
+        if (questionIndex !== 0) {
+            let previousIndex = questionIndex - 1;
+            setQuestionIndex(previousIndex);
+        }
     }
 
     return (
