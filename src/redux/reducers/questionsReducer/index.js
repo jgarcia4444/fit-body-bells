@@ -25,6 +25,16 @@ const initialState = {
 const questionsReducer = (state=initialState, action) => {
 
     switch(action.type) {
+        case "UPDATE_STRUGGLES":
+            return {
+                ...state,
+                struggles: action.newVal,
+            }
+        case "UPDATE_GOALS":
+            return {
+                ...state,
+                goals: action.newVal,
+            }
         case "UPDATE_IMPROVEMENT":
             return {
                 ...state,
