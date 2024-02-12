@@ -18,6 +18,7 @@ import updateInstagram from '../../../redux/actions/questions/updateInstagram';
 import updateImprovement from '../../../redux/actions/questions/updateImprovement';
 import updateGoals from '../../../redux/actions/questions/updateGoals';
 import updateStruggles from '../../../redux/actions/questions/updateStruggles';
+import InputDetail from '../../../shared/Text/InputDetail';
 
 const InformationPrompt = ({promptType, questions, updateLName, updateFName, updateAge, updateDuration, updateSessionsPerWeek, updateFoodRelation, updateInstagram, updatePhone, updateImprovement, updateGoals, updateStruggles}) => {
 
@@ -32,20 +33,24 @@ const InformationPrompt = ({promptType, questions, updateLName, updateFName, upd
     const {phone, instagramUsername} = contact;
     const {duration, timeUnit} = trainerDuration;
 
-    const inputWrapperStyle = "flex flex-row border-b-2 border-white pt-1 px-1";
+    const inputWrapperStyle = "flex flex-row  border-b-2 border-white pt-1 px-1";
 
     const namePrompts = 
     (
-        <div className="flex flex-row w-full justify-evenly">
+        <div className="flex flex-row flex-wrap w-full justify-evenly">
+            <InputDetail content={"Hi I'm Breanna. What is your name?"} />
             <TextInput icon={<FiUser color={iconColor} size={iconSize} />} label="First" value={fName} changeFunc={(val) => updateFName(val.target.value)} placeholder="first name"  />
             <TextInput icon={<FiUser color={iconColor} size={iconSize} />} label="Last" value={lName} changeFunc={(val) => updateLName(val.target.value)} placeholder="last name" />
         </div>
     );
 
     const agePrompt = (
-        <div className={inputWrapperStyle}>
-            <FiCalendar color={iconColor} size={20} />
-            <input className="bg-transparent ml-2" placeholder='Age' type="number" value={age} onChange={val => updateAge(val.target.value)}/>
+        <div className="flex flex-row flex-wrap  justify-center">
+            <InputDetail content={"How old are you? This will help me tailor a workout plan specifically for you."} />
+            <div className={inputWrapperStyle}>
+                <FiCalendar color={iconColor} size={20} />
+                <input className="bg-transparent ml-2" placeholder='Age' type="number" value={age} onChange={val => updateAge(val.target.value)}/>
+            </div>
         </div>
     )
 
