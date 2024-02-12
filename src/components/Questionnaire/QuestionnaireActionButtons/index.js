@@ -2,7 +2,7 @@
 import React from 'react';
 import { FiArrowRight, FiArrowLeft } from "react-icons/fi";
 
-const QuestionnaireActionButtons = ({nextPress, previousPress}) => {
+const QuestionnaireActionButtons = ({nextPress, previousPress, showSubmit}) => {
 
     const iconColor = "#000";
     const iconSize = 24
@@ -11,7 +11,11 @@ const QuestionnaireActionButtons = ({nextPress, previousPress}) => {
 
     const nextButton = (
         <div onClick={nextPress} className={iconButtonStyle}>
-            <FiArrowRight size={iconSize} color={iconColor}  />
+            {showSubmit === true ?
+                <p className="text-black font-bold">Submit</p>
+                :
+                <FiArrowRight size={iconSize} color={iconColor}  />
+            }
         </div>
 
     )

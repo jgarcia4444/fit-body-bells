@@ -9,6 +9,7 @@ const Questionnaire = ({questions}) => {
     const {hasTrainerBefore} = questions;
 
     const [questionIndex, setQuestionIndex] = useState(0);
+    const [showSubmit, setShowSubmit] = useState(false);
 
     const inputIconSize = 24;
     const inputIconColor = "#000";
@@ -22,16 +23,21 @@ const Questionnaire = ({questions}) => {
                 nextIndex = nextIndex + 2;
             } else {
                 nextIndex = nextIndex + 1;
+                if (nextIndex === questionnaireInputs.length - 1) {
+                    setShowSubmit(true);
+                }
             }
             setQuestionIndex(nextIndex);
         } else {
             // submit the form 
-            // change the next button icon to a submit button.
         }
     };
 
     const handlePreviousPress = () => {
         if (questionIndex !== 0) {
+            if (questionIndex === questionnaireInputs.length - 1) {
+                setShowSubmit(false);
+            }
             let previousIndex = questionIndex - 1;
             setQuestionIndex(previousIndex);
         }
@@ -44,7 +50,7 @@ const Questionnaire = ({questions}) => {
             </div>
             <div className="w-1/2">
                 <InformationPrompt promptType={questionnaireInputs[questionIndex]} />
-                <QuestionnaireActionButtons nextPress={handleNextPress} previousPress={handlePreviousPress}  />
+                <QuestionnaireActionButtons showSubmit={showSubmit} nextPress={handleNextPress} previousPress={handlePreviousPress}  />
             </div>
         </div>
     )
