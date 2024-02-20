@@ -39,6 +39,11 @@ const Questionnaire = ({questions}) => {
                 setShowSubmit(false);
             }
             let previousIndex = questionIndex - 1;
+            if (questionIndex === 5) {
+                if (hasTrainerBefore === false || hasTrainerBefore == undefined) {
+                    previousIndex -= 1;
+                }
+            }
             setQuestionIndex(previousIndex);
         }
     }
