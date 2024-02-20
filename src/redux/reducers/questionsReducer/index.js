@@ -1,4 +1,3 @@
-const questionnaireInputs = ["NAME", "AGE", "CONTACT", "TRAINER", "DURATION", "TIMES_PER_WEEK", "FOOD", "IMPROVE", "GOALS", "STRUGGLES"]
 const initialState = {
     name: {
         fName: "",
@@ -18,7 +17,8 @@ const initialState = {
     foodRelation: "",
     areasOfImprovement: "",
     goals: "",
-    struggles: ""
+    struggles: "",
+    formSubmitted: false,
 }
 
 

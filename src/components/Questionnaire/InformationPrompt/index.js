@@ -20,14 +20,12 @@ import updateGoals from '../../../redux/actions/questions/updateGoals';
 import updateStruggles from '../../../redux/actions/questions/updateStruggles';
 import InputDetail from '../../../shared/Text/InputDetail';
 
-const InformationPrompt = ({promptType, questions, updateLName, updateFName, updateAge, updateDuration, updateSessionsPerWeek, updateFoodRelation, updateInstagram, updatePhone, updateImprovement, updateGoals, updateStruggles}) => {
+const InformationPrompt = ({promptType, questions, updateLName, updateFName, updateAge, updateDuration, updateSessionsPerWeek, updateFoodRelation, updateInstagram, updatePhone, updateImprovement, updateGoals, updateStruggles, label}) => {
 
     const iconColor = "#fff";
     const iconSize= 20;
 
     const {name, age, contact, trainerDuration, sessionsPerWeek, foodRelation, areasOfImprovement, goals, struggles} = questions;
-
-    const questionnaireInputs = ["NAME", "AGE", "CONTACT", "TRAINER", "DURATION", "TIMES_PER_WEEK", "FOOD", "IMPROVE", "GOALS", "STRUGGLES"];
 
     const {fName, lName} = name;
     const {phone, instagramUsername} = contact;
@@ -38,7 +36,6 @@ const InformationPrompt = ({promptType, questions, updateLName, updateFName, upd
     const namePrompts = 
     (
         <div className="flex flex-row flex-wrap w-full justify-evenly">
-            <InputDetail content={"Hi I'm Breanna. What is your name?"} />
             <TextInput icon={<FiUser color={iconColor} size={iconSize} />} label="First" value={fName} changeFunc={(val) => updateFName(val.target.value)} placeholder="first name"  />
             <TextInput icon={<FiUser color={iconColor} size={iconSize} />} label="Last" value={lName} changeFunc={(val) => updateLName(val.target.value)} placeholder="last name" />
         </div>
@@ -46,7 +43,6 @@ const InformationPrompt = ({promptType, questions, updateLName, updateFName, upd
 
     const agePrompt = (
         <div className="flex flex-row flex-wrap  justify-center">
-            <InputDetail content={"How old are you? This will help me tailor a workout plan specifically for you."} />
             <div className={inputWrapperStyle}>
                 <FiCalendar color={iconColor} size={20} />
                 <input className="bg-transparent ml-2" placeholder='Age' type="number" value={age} onChange={val => updateAge(val.target.value)}/>
@@ -69,7 +65,7 @@ const InformationPrompt = ({promptType, questions, updateLName, updateFName, upd
 
     const durationPrompts = (
         <div className="flex flex-row w-full justify-evenly">
-            <SelectInput options={["Weeks", "Months", "Years"]} />
+            <SelectInput value={timeUnit}  options={["Weeks", "Months", "Years"]} />
             <div className={inputWrapperStyle}>
                 <FiCalendar color={iconColor} size={iconSize} />
                 <input className="bg-transparent ml-2" placeholder='Duration' type="number" value={duration} onChange={val => updateDuration(val.target.value)}/>
@@ -153,7 +149,8 @@ const InformationPrompt = ({promptType, questions, updateLName, updateFName, upd
     }
 
     return (
-        <div className="text-white w-full border-2 border-white rounded-lg px-2 py-10 flex flex-row justify-center">
+        <div className="text-white w-full border-2 border-white rounded-lg px-2 py-10 flex flex-row justify-center flex-wrap">
+            <InputDetail content={label} />
             {renderPrompt()}
         </div>
     )

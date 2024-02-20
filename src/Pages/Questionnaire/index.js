@@ -11,8 +11,18 @@ const Questionnaire = ({questions}) => {
     const [questionIndex, setQuestionIndex] = useState(0);
     const [showSubmit, setShowSubmit] = useState(false);
 
-    const inputIconSize = 24;
-    const inputIconColor = "#000";
+    const labels = [
+        "Hi i'm Breanna, what is your name?",
+        "How old are you? This will help me tailor a workout plan specifically for you.",
+        "Contact info? So we can communicate through this process.",
+        "Have you worked with a trainer or coach before?",
+        "How long did you work with them?",
+        "How many times a week did you exercise?",
+        "What is your relationship with food like?",
+        "What areas of your fitness would you like to improve?",
+        "What are your goals?",
+        "What do you struggle with?",
+    ];
 
     const questionnaireInputs = ["NAME", "AGE", "CONTACT", "TRAINER", "DURATION", "TIMES_PER_WEEK", "FOOD", "IMPROVE", "GOALS", "STRUGGLES"];
 
@@ -40,7 +50,7 @@ const Questionnaire = ({questions}) => {
             }
             let previousIndex = questionIndex - 1;
             if (questionIndex === 5) {
-                if (hasTrainerBefore === false || hasTrainerBefore == undefined) {
+                if (hasTrainerBefore === false || hasTrainerBefore === undefined) {
                     previousIndex -= 1;
                 }
             }
@@ -54,7 +64,7 @@ const Questionnaire = ({questions}) => {
                 <h1 className="text-3xl ">Starter Questionnaire</h1>
             </div>
             <div className="w-1/2">
-                <InformationPrompt promptType={questionnaireInputs[questionIndex]} />
+                <InformationPrompt label={labels[questionIndex]} promptType={questionnaireInputs[questionIndex]} />
                 <QuestionnaireActionButtons showSubmit={showSubmit} nextPress={handleNextPress} previousPress={handlePreviousPress}  />
             </div>
         </div>
