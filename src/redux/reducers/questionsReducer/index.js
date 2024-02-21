@@ -25,6 +25,11 @@ const initialState = {
 const questionsReducer = (state=initialState, action) => {
 
     switch(action.type) {
+        case "SUBMIT_QUESTIONNAIRE":
+            return {
+                ...state,
+                formSubmitted: true,
+            }
         case "UPDATE_STRUGGLES":
             return {
                 ...state,

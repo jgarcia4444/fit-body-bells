@@ -4,9 +4,11 @@ import { connect } from 'react-redux';
 import InformationPrompt from '../../components/Questionnaire/InformationPrompt';
 import QuestionnaireActionButtons from '../../components/Questionnaire/QuestionnaireActionButtons';
 
-const Questionnaire = ({questions}) => {
+import submitQuestionnaire from '../../redux/actions/questionnaire/submitQuestionnaire';
 
-    const {hasTrainerBefore} = questions;
+const Questionnaire = ({questions, submitQuestionnaire}) => {
+
+    const {hasTrainerBefore, formSubmitted} = questions;
 
     const [questionIndex, setQuestionIndex] = useState(0);
     const [showSubmit, setShowSubmit] = useState(false);
@@ -40,6 +42,8 @@ const Questionnaire = ({questions}) => {
             setQuestionIndex(nextIndex);
         } else {
             // submit the form 
+            console.log(questions);
+            submitQuestionnaire(questions);
         }
     };
 
@@ -60,13 +64,27 @@ const Questionnaire = ({questions}) => {
 
     return (
         <div className="w-screen h-screen flex flex-col items-center justify-center bg-black text-white">
-            <div className="w-1/2">
-                <h1 className="text-3xl ">Starter Questionnaire</h1>
-            </div>
-            <div className="w-1/2">
-                <InformationPrompt label={labels[questionIndex]} promptType={questionnaireInputs[questionIndex]} />
-                <QuestionnaireActionButtons showSubmit={showSubmit} nextPress={handleNextPress} previousPress={handlePreviousPress}  />
-            </div>
+            {formSubmitted === false ?
+            (
+                <>
+                    <div className="w-1/2">
+                    <h1 className="text-3xl ">Starter Questionnaire</h1>
+                    </div>
+                    <div className="w-1/2">
+                        <InformationPrompt label={labels[questionIndex]} promptType={questionnaireInputs[questionIndex]} />
+                        <QuestionnaireActionButtons showSubmit={showSubmit} nextPress={handleNextPress} previousPress={handlePreviousPress}  />
+                    </div>
+                </>
+            )
+            :
+            (
+                <>
+                    <h3 className="text-white text-2xl font-bold">Thanks for Completing the Form</h3>
+                    <p className="text-white">Look out for a confirmation email that this form was received. I will be in contact with you as soon as possible.</p>
+                </>
+            )
+            }
+            
         </div>
     )
 }
@@ -77,7 +95,13 @@ const mapStateToProps = state => {
     }
 }
 
+const mapDispatchToProps = dispatch => {
+    return {
+        submitQuestionnaire: info => dispatch(submitQuestionnaire(info)),
+    }
+}
+
 export default connect(
     mapStateToProps,
-    null
+    mapDispatchToProps,
 )(Questionnaire);
