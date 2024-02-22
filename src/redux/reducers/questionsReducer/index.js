@@ -8,12 +8,12 @@ const initialState = {
         phone: "",
         instagramUsername: ""
     },
-    hasTrainerBefore: undefined,
+    hasTrainerBefore: false,
     trainerDuration: {
         timeUnit: "",
-        duration: 0,
+        duration: "",
     },
-    sessionsPerWeek: 0,
+    sessionsPerWeek: "",
     foodRelation: "",
     areasOfImprovement: "",
     goals: "",
@@ -25,6 +25,14 @@ const initialState = {
 const questionsReducer = (state=initialState, action) => {
 
     switch(action.type) {
+        case "UPDATE_TIME_UNIT":
+            return {
+                ...state,
+                trainerDuration: {
+                    ...state.trainerDuration,
+                    timeUnit: action.newValue,
+                }
+            }
         case "SUBMIT_QUESTIONNAIRE":
             return {
                 ...state,

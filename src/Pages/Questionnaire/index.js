@@ -42,20 +42,33 @@ const Questionnaire = ({questions, submitQuestionnaire}) => {
 
     const questionnaireInputs = [nameInfo, ageInfo, contactInfo, trainerInfo, durationInfo, frequencyInfo, foodInfo, improvementInfo, goalsInfo, strugglesInfo];
 
+    const checkValues = values => {
+        console.log("Here are the values checked", values);
+        let valuesPresent = true;
+        values.forEach(promptValue => {
+            if (promptValue === "") {
+                valuesPresent = false;
+            }
+        });
+        return valuesPresent;
+    };
+
     const handleNextPress = () => {
         let nextIndex = questionIndex;
-        if (nextIndex !== questionnaireInputs.length - 1) {
-            if (questionIndex === 3 &&  (hasTrainerBefore === false || hasTrainerBefore === undefined)) {
-                nextIndex = nextIndex + 2;
-            } else {
-                nextIndex = nextIndex + 1;
-                if (nextIndex === questionnaireInputs.length - 1) {
-                    setShowSubmit(true);
+        if (checkValues(questionnaireInputs[questionIndex].values) === true) {
+            if (nextIndex !== questionnaireInputs.length - 1) {
+                if (questionIndex === 3 &&  (hasTrainerBefore === false || hasTrainerBefore === undefined)) {
+                    nextIndex = nextIndex + 2;
+                } else {
+                    nextIndex = nextIndex + 1;
+                    if (nextIndex === questionnaireInputs.length - 1) {
+                        setShowSubmit(true);
+                    }
                 }
+                setQuestionIndex(nextIndex);
+            } else {
+                submitQuestionnaire(questions);
             }
-            setQuestionIndex(nextIndex);
-        } else {
-            submitQuestionnaire(questions);
         }
     };
 
