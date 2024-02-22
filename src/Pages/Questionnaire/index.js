@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { connect } from 'react-redux';
 
 import InformationPrompt from '../../components/Questionnaire/InformationPrompt';
@@ -8,7 +8,10 @@ import submitQuestionnaire from '../../redux/actions/questionnaire/submitQuestio
 
 const Questionnaire = ({questions, submitQuestionnaire}) => {
 
-    const {hasTrainerBefore, formSubmitted} = questions;
+    const {hasTrainerBefore, formSubmitted, name, age, contact, trainerDuration, sessionsPerWeek, foodRelation, areasOfImprovement, goals, struggles} = questions;
+    const {fName, lName} = name;
+    const {phone, instagramUsername} = contact;
+    const {timeUnit, duration} = trainerDuration;
 
     const [questionIndex, setQuestionIndex] = useState(0);
     const [showSubmit, setShowSubmit] = useState(false);
@@ -26,7 +29,18 @@ const Questionnaire = ({questions, submitQuestionnaire}) => {
         "What do you struggle with?",
     ];
 
-    const questionnaireInputs = ["NAME", "AGE", "CONTACT", "TRAINER", "DURATION", "TIMES_PER_WEEK", "FOOD", "IMPROVE", "GOALS", "STRUGGLES"];
+    const nameInfo = {key: "NAME", values: [fName, lName]};
+    const ageInfo = {key: "AGE", values: [age]};
+    const contactInfo = {key: "CONTACT", values: [phone, instagramUsername]};
+    const trainerInfo = {key: "TRAINER", values: [hasTrainerBefore]};
+    const durationInfo = {key: "DURATION", values: [timeUnit, duration]};
+    const frequencyInfo = {key: "TIMES_PER_WEEK", values: [sessionsPerWeek]};
+    const foodInfo = {key: "FOOD", values: [foodRelation]};
+    const improvementInfo = {key: "IMPROVE", values: [areasOfImprovement]};
+    const goalsInfo = {key: "GOALS", values: [goals]};
+    const strugglesInfo = {key: "STRUGGLES", values: [struggles]}
+
+    const questionnaireInputs = [nameInfo, ageInfo, contactInfo, trainerInfo, durationInfo, frequencyInfo, foodInfo, improvementInfo, goalsInfo, strugglesInfo];
 
     const handleNextPress = () => {
         let nextIndex = questionIndex;
@@ -41,8 +55,6 @@ const Questionnaire = ({questions, submitQuestionnaire}) => {
             }
             setQuestionIndex(nextIndex);
         } else {
-            // submit the form 
-            console.log(questions);
             submitQuestionnaire(questions);
         }
     };
@@ -62,6 +74,10 @@ const Questionnaire = ({questions, submitQuestionnaire}) => {
         }
     }
 
+    useEffect(() => {
+
+    },[])
+
     return (
         <div className="w-screen h-screen flex flex-col items-center justify-center bg-black text-white">
             {formSubmitted === false ?
@@ -71,7 +87,7 @@ const Questionnaire = ({questions, submitQuestionnaire}) => {
                     <h1 className="text-3xl ">Starter Questionnaire</h1>
                     </div>
                     <div className="w-1/2">
-                        <InformationPrompt label={labels[questionIndex]} promptType={questionnaireInputs[questionIndex]} />
+                        <InformationPrompt label={labels[questionIndex]} promptType={questionnaireInputs[questionIndex].key} />
                         <QuestionnaireActionButtons showSubmit={showSubmit} nextPress={handleNextPress} previousPress={handlePreviousPress}  />
                     </div>
                 </>
