@@ -19,6 +19,7 @@ const initialState = {
     goals: "",
     struggles: "",
     formSubmitted: false,
+    loading: false,
 }
 
 
