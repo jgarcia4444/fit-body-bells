@@ -1,31 +1,37 @@
-
+import emailjs from '@emailjs/browser';
 const submitQuestionnaire = info => {
 
-    let url = "https://api.emailjs.com/api/v1.0/email/send"
+    let serviceID = "jgar_test";
+    let templateID = "template_1";
+    let publicKey = "rqyV6YA0V16NPoeVX";
 
-    let options = {
-        method: "POST",
-        header: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            template_params: {
-                from_name: "test",
-                to_name: "test2",
-                message: "This is a test"
-            },
-            service_id: "jgar_test",
-            template: "template_tromgf5S",
-        })
-    };
+    let templateParams = {
+        name: info.name.fName + " " + info.name.lName,
+        age: info.age,
+        phone: info.contact.phoneNumber,
+        instagramUsername: info.contact.instagramUsername,
+    }
+
     return async dispatch => {
         dispatch({type: "SUBMITTING_FORM"});
-        fetch(url, options)
-            .then(res => res.json())
-            .then(data => console.log(data))
+        emailjs.send(
+            serviceID,
+            templateID,
+            templateParams,
+            {
+                publicKey: publicKey,
+            }
+        )
+        .then((res) => {
+            console.log("Success!", res.status, res.text)
+        },
+        (err) => {
+            console.log("Failed...", err)
+        }
+        )
         return dispatch({type: "SUBMIT_QUESTIONNAIRE"});
     }
 }
-// template_vkh2nxf
+// public key = rqyV6YA0V16NPoeVX
 
 export default submitQuestionnaire;
