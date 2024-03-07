@@ -8,8 +8,16 @@ const submitQuestionnaire = info => {
     let templateParams = {
         name: info.name.fName + " " + info.name.lName,
         age: info.age,
-        phone: info.contact.phoneNumber,
+        phone: info.contact.phone,
         instagramUsername: info.contact.instagramUsername,
+        workedWithCoach: info.hasTrainerBefore === true ? "Yes" : "No",
+        duration: info.trainerDuration.duration,
+        timeUnit: info.trainerDuration.timeUnit,
+        sessionsPerWeek: info.sessionsPerWeek,
+        foodRelation: info.foodRelation,
+        areasOfImprovement: info.areasOfImprovement,
+        goals: info.goals,
+        struggles: info.struggles,
     }
 
     return async dispatch => {

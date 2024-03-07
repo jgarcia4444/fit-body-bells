@@ -96,7 +96,7 @@ const questionsReducer = (state=initialState, action) => {
         case "UPDATE_AGE":
             return {
                 ...state,
-                age: action.newVal,
+                age: action.newValue,
             }
         case "UPDATE_F_NAME":
             return {
