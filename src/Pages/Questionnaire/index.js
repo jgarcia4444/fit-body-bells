@@ -57,8 +57,8 @@ const Questionnaire = ({questions, submitQuestionnaire}) => {
         let nextIndex = questionIndex;
         if (checkValues(questionnaireInputs[questionIndex].values) === true) {
             if (nextIndex !== questionnaireInputs.length - 1) {
-                if (questionIndex === 3 &&  (hasTrainerBefore === false || hasTrainerBefore === undefined)) {
-                    nextIndex = nextIndex + 2;
+                if ((questionIndex === 3) && (hasTrainerBefore === false)) {
+                    nextIndex = nextIndex + 3;
                 } else {
                     nextIndex = nextIndex + 1;
                     if (nextIndex === questionnaireInputs.length - 1) {
