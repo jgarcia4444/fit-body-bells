@@ -4,10 +4,10 @@ import { FiArrowRight, FiArrowLeft } from "react-icons/fi";
 
 const QuestionnaireActionButtons = ({nextPress, previousPress, showSubmit}) => {
 
-    const iconColor = "#000";
+    const iconColor = "#fff";
     const iconSize = 24
 
-    const iconButtonStyle = `p-2 border-white rounded-full bg-white hover:scale-110 hover:bg-yellow-500 hover:cursor-pointer transition-all duration-300`
+    const iconButtonStyle = `p-2 bg-black rounded-full hover:scale-110 hover:bg-yellow-500 hover:cursor-pointer transition-all duration-300`
 
     const nextButton = (
         <div onClick={nextPress} className={iconButtonStyle}>
