@@ -8,7 +8,7 @@ const RadioInput = ({label, updateHasTrainer, hasTrainerBefore}) => {
     const radioButtonStyle = "w-4 h-4"
 
     return (
-        <div className="flex flex-row gap-4 justify-start-start w-full text-white mx-16">
+        <div className="flex flex-row gap-4 justify-start-start w-full mx-16">
             <div className={radioRowStyle}>
                 <label className="mr-2" htmlFor="Yes">Yes</label>
                 <input checked={hasTrainerBefore === true ? true : false} className={radioButtonStyle} type="radio" name="trainer" id="" onClick={() => updateHasTrainer(true)} value={true} />

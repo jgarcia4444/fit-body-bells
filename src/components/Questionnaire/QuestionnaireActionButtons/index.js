@@ -12,7 +12,7 @@ const QuestionnaireActionButtons = ({nextPress, previousPress, showSubmit}) => {
     const nextButton = (
         <div onClick={nextPress} className={iconButtonStyle}>
             {showSubmit === true ?
-                <p className="text-black font-bold">Submit</p>
+                <p className="text-white font-bold">Submit</p>
                 :
                 <FiArrowRight size={iconSize} color={iconColor}  />
             }

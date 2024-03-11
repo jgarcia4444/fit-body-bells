@@ -22,7 +22,7 @@ import InputDetail from '../../../shared/Text/InputDetail';
 
 const InformationPrompt = ({promptType, questions, updateLName, updateFName, updateAge, updateDuration, updateSessionsPerWeek, updateFoodRelation, updateInstagram, updatePhone, updateImprovement, updateGoals, updateStruggles, label}) => {
 
-    const iconColor = "#fff";
+    const iconColor = "#000";
     const iconSize= 20;
 
     const {name, age, contact, trainerDuration, sessionsPerWeek, foodRelation, areasOfImprovement, goals, struggles} = questions;
@@ -31,7 +31,7 @@ const InformationPrompt = ({promptType, questions, updateLName, updateFName, upd
     const {phone, instagramUsername} = contact;
     const {duration, timeUnit} = trainerDuration;
 
-    const inputWrapperStyle = "flex flex-row  border-b-2 border-white pt-1 px-1";
+    const inputWrapperStyle = "flex flex-row border-b-2 border-black pt-1 px-1";
 
     const namePrompts = 
     (
@@ -42,7 +42,7 @@ const InformationPrompt = ({promptType, questions, updateLName, updateFName, upd
     );
 
     const agePrompt = (
-        <div className="flex flex-row flex-wrap  justify-center">
+        <div className="flex flex-row flex-wrap justify-center">
             <div className={inputWrapperStyle}>
                 <FiCalendar color={iconColor} size={20} />
                 <input className="bg-transparent ml-2" placeholder='Age' type="number" value={age} onChange={val => updateAge(val.target.value)}/>
@@ -149,7 +149,7 @@ const InformationPrompt = ({promptType, questions, updateLName, updateFName, upd
     }
 
     return (
-        <div className="text-white w-full border-2 border-white rounded-lg px-2 py-10 flex flex-row justify-center flex-wrap">
+        <div className="w-full border-2 border-black rounded-lg px-2 py-10 flex flex-row justify-center flex-wrap">
             <InputDetail content={label} />
             {renderPrompt()}
         </div>
