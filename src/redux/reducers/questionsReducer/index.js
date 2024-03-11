@@ -10,7 +10,7 @@ const initialState = {
     },
     hasTrainerBefore: false,
     trainerDuration: {
-        timeUnit: "",
+        timeUnit: "Weeks",
         duration: "",
     },
     sessionsPerWeek: "",

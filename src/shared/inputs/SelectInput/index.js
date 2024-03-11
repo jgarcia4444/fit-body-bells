@@ -9,7 +9,7 @@ const SelectInput = ({options, updateTimeUnit}) => {
 
     return (
         <div className="flex flex-row border-b-2 border-black pt-1 px-1">
-            <FiCalendar color={"#fff"} size={20} />
+            <FiCalendar color={"#000"} size={20} />
             <select onChange={val => updateTimeUnit(val.target.value)} className="bg-transparent" name="duration">
                 {options.map((option, i) => <option className="text-black" value={option}>{option}</option>)}
             </select>
