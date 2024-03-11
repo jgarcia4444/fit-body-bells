@@ -1,4 +1,4 @@
-const TikTokIcon = ({ color = "#ffffff" }) => {
+const TikTokIcon = ({ color = "#000" }) => {
     return (
       <svg
         fill={color}

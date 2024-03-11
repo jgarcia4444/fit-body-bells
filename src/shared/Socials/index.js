@@ -4,7 +4,7 @@ import TikTokIcon from './TikTokIcon';
 
 const Socials = () => {
 
-    const iconColor = "#fff";
+    const iconColor = "#000";
     const iconSize = 24;
 
     const iconClassName = "transition-all duration-300 hover:scale-110"

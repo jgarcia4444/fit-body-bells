@@ -92,7 +92,7 @@ const Questionnaire = ({questions, submitQuestionnaire}) => {
     },[])
 
     return (
-        <div className="w-screen h-screen flex flex-col items-center justify-center bg-black text-white">
+        <div className="w-screen h-screen flex flex-col items-center justify-center">
             {formSubmitted === false ?
             (
                 <>

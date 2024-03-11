@@ -11,8 +11,8 @@ const About = () => {
     const renderAboutSections = () => {
         return aboutInfo.map((aboutDetails) => {
             return (
-                <div className="bg-black px-4 py-2 w-96 h-96 overflow-y-auto shadow-lg rounded-lg flex flex-col items-center justify-center">
-                    <p className="text-white text-lg">{aboutDetails}</p>
+                <div className="px-4 py-2 w-96 h-96 overflow-y-auto shadow-lg rounded-lg flex flex-col items-center justify-center border-black border-2">
+                    <p className="text-lg ">{aboutDetails}</p>
                 </div>
             )
         })
@@ -21,8 +21,8 @@ const About = () => {
     return (
         <div className="flex flex-row flex-wrap items-center justify-around pt-4 pb-8">
             {renderAboutSections()}
-            <div className="w-full flex flex-row items-cente justify-center mt-8">
-                <p className="text-4xl">Let's Get Strong AF</p>
+            <div className="w-full flex flex-row items-center justify-center mt-8">
+                <p className="text-4xl mb-24">Let's Get Strong AF</p>
             </div>
         </div>
     )
