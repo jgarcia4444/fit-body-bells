@@ -11,9 +11,9 @@ const TextInput = ({icon, value, changeFunc, placeholder, label=""}) => {
                 return "text"
         }
     }
-
+//
     return (
-        <div className="flex flex-row border-b-2 border-black pt-1 px-1 items-start">
+        <div className="flex flex-row border-b-2 border-black pt-1 px-1 items-start"> 
             {icon}
             <input placeholder={placeholder} className="bg-transparent text-black ml-2" value={value} type={computedType()} onChange={changeFunc} />
         </div>

@@ -95,15 +95,15 @@ const Questionnaire = ({questions, submitQuestionnaire}) => {
         <div className="w-screen h-screen flex flex-col items-center justify-center">
             {formSubmitted === false ?
             (
-                <>
-                    <div className="w-1/2">
-                    <h1 className="text-3xl ">Starter Questionnaire</h1>
+                <div className="w-full flex flex-col items-center">
+                    <div className="w-2/3">
+                        <h1 className="text-3xl ">Starter Questionnaire</h1>
                     </div>
-                    <div className="w-1/2">
+                    <div className="w-2/3">
                         <InformationPrompt label={labels[questionIndex]} promptType={questionnaireInputs[questionIndex].key} />
                         <QuestionnaireActionButtons showSubmit={showSubmit} nextPress={handleNextPress} previousPress={handlePreviousPress}  />
                     </div>
-                </>
+                </div>
             )
             :
             (

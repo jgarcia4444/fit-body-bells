@@ -149,7 +149,7 @@ const InformationPrompt = ({promptType, questions, updateLName, updateFName, upd
     }
 
     return (
-        <div className="w-full border-2 border-black rounded-lg px-2 py-10 flex flex-row justify-center flex-wrap">
+        <div className="px-2 py-4 border-2 border-black rounded-lg flex flex-col justify-center flex-wrap">
             <InputDetail content={label} />
             {renderPrompt()}
         </div>
