@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-const TextInput = ({icon, value, changeFunc, placeholder, label=""}) => {
+const TextInput = ({icon, value, changeFunc, placeholder, label="", extraClassName="w-2/5"}) => {
 
     const computedType = () => {
         switch(label) {
@@ -11,11 +11,10 @@ const TextInput = ({icon, value, changeFunc, placeholder, label=""}) => {
                 return "text"
         }
     }
-//
     return (
-        <div className="flex flex-row border-b-2 border-black pt-1 px-1 items-start"> 
+        <div className={`flex flex-row border-b-2 border-white pt-1 px-1 items-start mb-2 w-full md:${extraClassName} mx-2 transition-all duration-300`}> 
             {icon}
-            <input placeholder={placeholder} className="bg-transparent text-black ml-2" value={value} type={computedType()} onChange={changeFunc} />
+            <input placeholder={placeholder} className="bg-transparent text-white ml-2 w-full" value={value} type={computedType()} onChange={changeFunc} />
         </div>
     )
 }

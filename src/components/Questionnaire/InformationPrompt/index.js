@@ -22,7 +22,7 @@ import InputDetail from '../../../shared/Text/InputDetail';
 
 const InformationPrompt = ({promptType, questions, updateLName, updateFName, updateAge, updateDuration, updateSessionsPerWeek, updateFoodRelation, updateInstagram, updatePhone, updateImprovement, updateGoals, updateStruggles, label}) => {
 
-    const iconColor = "#000";
+    const iconColor = "#fff";
     const iconSize= 20;
 
     const {name, age, contact, trainerDuration, sessionsPerWeek, foodRelation, areasOfImprovement, goals, struggles} = questions;
@@ -31,99 +31,105 @@ const InformationPrompt = ({promptType, questions, updateLName, updateFName, upd
     const {phone, instagramUsername} = contact;
     const {duration, timeUnit} = trainerDuration;
 
-    const inputWrapperStyle = "flex flex-row border-b-2 border-black pt-1 px-1";
+    const inputWrapperStyle = "flex flex-row border-b-2 border-white pt-1 px-1 w-full mx-2 transition-all duration-300";
 
     const namePrompts = 
     (
-        <div className="flex flex-row flex-wrap w-full justify-evenly">
+        <div className="flex flex-row flex-wrap w-full justify-between transition-all duration-300">
             <TextInput icon={<FiUser color={iconColor} size={iconSize} />} label="First" value={fName} changeFunc={(val) => updateFName(val.target.value)} placeholder="first name"  />
             <TextInput icon={<FiUser color={iconColor} size={iconSize} />} label="Last" value={lName} changeFunc={(val) => updateLName(val.target.value)} placeholder="last name" />
         </div>
     );
 
     const agePrompt = (
-        <div className="flex flex-row flex-wrap justify-center">
+        <div className="flex flex-row flex-wrap justify-center w-full transition-all duration-300">
             <div className={inputWrapperStyle}>
                 <FiCalendar color={iconColor} size={20} />
-                <input className="bg-transparent ml-2" placeholder='Age' type="number" value={age} onChange={val => updateAge(val.target.value)}/>
+                <input className="bg-transparent ml-2 w-full text-white" placeholder='Age' type="number" value={age} onChange={val => updateAge(val.target.value)}/>
             </div>
         </div>
     )
 
     const contactPrompts = (
-        <div className="flex flex-row w-full justify-evenly">
+        <div className="flex flex-row flex-wrap w-full justify-between transition-all duration-300">
             <TextInput icon={<FiPhone color={iconColor} size={iconSize} />} label="Phone" value={phone} changeFunc={val => updatePhone(val.target.value)} placeholder={"Phone Number"} />
             <TextInput icon={<FiInstagram color={iconColor} size={iconSize} />} label="Instagram" value={instagramUsername} changeFunc={val => updateInstagram(val.target.value)} placeholder={"Instagram Username"} />
         </div>
     );
 
     const trainerPrompt = (
-        <div className="flex flex-row w-full justify-evenly">
+        <div className="flex flex-row w-full justify-evenly transition-all duration-300">
             <RadioInput label="Have you worked with a trainer or coach before?" />
         </div>
     )
 
     const durationPrompts = (
-        <div className="flex flex-row w-full justify-evenly">
+        <div className="flex flex-row w-full justify-evenly transition-all duration-300">
             <SelectInput value={timeUnit}  options={["Weeks", "Months", "Years"]} />
             <div className={inputWrapperStyle}>
                 <FiCalendar color={iconColor} size={iconSize} />
-                <input className="bg-transparent ml-2" placeholder='Duration' type="number" value={duration} onChange={val => updateDuration(val.target.value)}/>
+                <input className="bg-transparent ml-2 text-white w-full" placeholder='Duration' type="number" value={duration} onChange={val => updateDuration(val.target.value)}/>
             </div>
         </div>
     )
 
     const timesPerWeekPrompt = (
-        <div className={inputWrapperStyle}>
-            <FiCalendar color={iconColor} size={iconSize} />
-            <input placeholder={"sessions per week"} className="bg-transparent ml-2" type="number" value={sessionsPerWeek} onChange={val => updateSessionsPerWeek(val.target.value)} />
+        <div className="flex flex-row flex-wrap justify-center w-full transition-all duration-300">
+            <div className={inputWrapperStyle}>
+                <FiCalendar color={iconColor} size={iconSize} />
+                <input placeholder={"sessions per week"} className="bg-transparent ml-2 w-full text-white" type="number" value={sessionsPerWeek} onChange={val => updateSessionsPerWeek(val.target.value)} />
+            </div>
         </div>
     );
 
     const foodPrompt = (
-        <div className={`flex flex-row w-full justify-evenly`}>
+        <div className={`flex flex-row w-full justify-start`}>
             <TextInput
                 placeholder={"food relation"} 
                 icon={<FiSmile color={iconColor} size={iconSize} />}
                 label="What's your relationship with food?" 
                 value={foodRelation}
                 changeFunc={val => updateFoodRelation(val.target.value)}
+                extraClassName="w-full"
             />
-        </div>
+        </div>  
     );
 
     const improvePrompt = (
-        <div className="flex flex-row w-full justify-evenly">
+        <div className="flex flex-row w-full justify-start w-full">
             <TextInput
                 placeholder={"areas of improvement"}
                 icon={<FiUser color={iconColor} size={iconSize} />}
                 label=""
                 value={areasOfImprovement}
                 changeFunc={val => updateImprovement(val.target.value)}
+                extraClassName='w-full'
             />
         </div>
     );
 
     const goalsPrompt = (
-        <div className="flex flex-row w-full justify-evenly">
+        <div className="flex flex-row w-full justify-start w-full">
             <TextInput 
                 placeholder={"goals"}
                 icon={<FiList color={iconColor} size={iconSize} />}
                 label="What are your goals?"
                 value={goals}
                 changeFunc={val => updateGoals(val.target.value)}
+                extraClassName='w-full'
             />
         </div>
     )
 
     const strugglesPrompt = (
-        <div className="flex flex-row w-full justify-evenly">
+        <div className="flex flex-row w-full justify-start w-full">
             <TextInput 
                 placeholder={"struggles"}
                 icon={<FiUser color={iconColor} size={iconSize} />}
                 label="Any Struggles?"
                 value={struggles}
                 changeFunc={val => updateStruggles(val.target.value)}
+                extraClassName='w-full'
             />
         </div>
     )
@@ -149,7 +155,7 @@ const InformationPrompt = ({promptType, questions, updateLName, updateFName, upd
     }
 
     return (
-        <div className="px-2 py-4 border-2 border-black rounded-lg flex flex-col justify-center flex-wrap">
+        <div className="px-2 py-4 shadow-black shadow-lg rounded-lg flex flex-col items-start justify-start flex-wrap bg-black">
             <InputDetail content={label} />
             {renderPrompt()}
         </div>
