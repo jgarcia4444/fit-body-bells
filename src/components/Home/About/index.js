@@ -9,10 +9,10 @@ const About = () => {
     ]
 
     const renderAboutSections = () => {
-        return aboutInfo.map((aboutDetails) => {
+        return aboutInfo.map((aboutDetails, i) => {
             return (
-                <div className="px-4 py-2 w-96 h-96 overflow-y-auto shadow-lg rounded-lg flex flex-col items-center justify-center border-black border-2">
-                    <p className="text-lg ">{aboutDetails}</p>
+                <div key={`about details-${i}`} className="px-4 py-2 w-full mx-4 md:w-60 h-48 md:h-96 lg:w-80 lg:h-60 xl:w-96 overflow-y-auto shadow-xl rounded-lg flex flex-col items-center justify-center md:justify-start bg-black my-4 md:my-0 transition-all duration-300">
+                    <p className="text-white font-sans font-thin ">{aboutDetails}</p>
                 </div>
             )
         })
