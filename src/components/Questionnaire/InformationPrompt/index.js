@@ -36,8 +36,8 @@ const InformationPrompt = ({promptType, questions, updateLName, updateFName, upd
     const namePrompts = 
     (
         <div className="flex flex-row flex-wrap w-full justify-between transition-all duration-300">
-            <TextInput icon={<FiUser color={iconColor} size={iconSize} />} label="First" value={fName} changeFunc={(val) => updateFName(val.target.value)} placeholder="first name"  />
-            <TextInput icon={<FiUser color={iconColor} size={iconSize} />} label="Last" value={lName} changeFunc={(val) => updateLName(val.target.value)} placeholder="last name" />
+            <TextInput icon={<FiUser color={iconColor} size={iconSize} />} label="First" value={fName} changeFunc={(val) => updateFName(val.target.value)} placeholder="first name" extraClassName='bg-white'  />
+            <TextInput icon={<FiUser color={iconColor} size={iconSize} />} label="Last" value={lName} changeFunc={(val) => updateLName(val.target.value)} placeholder="last name" extraClassName='bg-white' />
         </div>
     );
 
@@ -45,7 +45,7 @@ const InformationPrompt = ({promptType, questions, updateLName, updateFName, upd
         <div className="flex flex-row flex-wrap justify-center w-full transition-all duration-300">
             <div className={inputWrapperStyle}>
                 <FiCalendar color={iconColor} size={20} />
-                <input className="bg-transparent ml-2 w-full text-white" placeholder='Age' type="number" value={age} onChange={val => updateAge(val.target.value)}/>
+                <input className="bg-transparent ml-2 w-full text-white" placeholder='Age' type="number" value={age} onChange={val => updateAge(val.target.value)} />
             </div>
         </div>
     )
@@ -122,7 +122,7 @@ const InformationPrompt = ({promptType, questions, updateLName, updateFName, upd
     )
 
     const strugglesPrompt = (
-        <div className="flex flex-row w-full justify-start w-full">
+        <div className="flex flex-row w-full justify-start">
             <TextInput 
                 placeholder={"struggles"}
                 icon={<FiUser color={iconColor} size={iconSize} />}
@@ -155,7 +155,7 @@ const InformationPrompt = ({promptType, questions, updateLName, updateFName, upd
     }
 
     return (
-        <div className="px-2 py-4 shadow-black shadow-lg rounded-lg flex flex-col items-start justify-start flex-wrap bg-black">
+        <div className="px-2 py-4 shadow-black shadow-lg rounded-lg flex flex-col items-start justify-start flex-wrap bg-black mb-4">
             <InputDetail content={label} />
             {renderPrompt()}
         </div>
