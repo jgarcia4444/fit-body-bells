@@ -6,7 +6,7 @@ import HomeBottomCTA from '../../components/Home/HomeBottomCTA';
 
 const Home = () => {
     return (
-        <div className="">
+        <div className="h-screen w-screen flex flex-row flex-wrap">
             <Header />
             <About />
             <HomeBottomCTA />
