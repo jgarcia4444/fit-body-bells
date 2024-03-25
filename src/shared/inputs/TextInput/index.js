@@ -8,9 +8,9 @@ const TextInput = ({icon, value, changeFunc, placeholder, label="", extraClassNa
             case "Phone":
                 return "tel";
             case "Instagram":
-                return "email"
+                return "email";
             default:
-                return "text"
+                return "text";
         }
     }
     return (

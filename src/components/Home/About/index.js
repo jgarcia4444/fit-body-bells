@@ -11,18 +11,18 @@ const About = () => {
     const renderAboutSections = () => {
         return aboutInfo.map((aboutDetails, i) => {
             return (
-                <div key={`about details-${i}`} className=" px-2 py-2 w-full  md:w-60 h-48 md:h-96 lg:w-80 lg:h-60 xl:w-96 overflow-y-auto shadow-xl md:rounded-lg flex flex-col items-center justify-center md:justify-start bg-black my-2 md:my-0 transition-all duration-300">
-                    <p className="text-white font-sans font-thin ">{aboutDetails}</p>
+                <div key={`about details-${i}`} className=" px-4 py-2 w-full  md:w-1/3  overflow-y-auto md:rounded-lg flex flex-col items-center justify-center md:justify-start my-2 md:my-0 transition-all duration-300 ">
+                    <p className="text-white font-sans font-thin text-lg ">{aboutDetails}</p>
                 </div>
             )
         })
     };
 
     return (
-        <div className="flex flex-row flex-wrap items-center justify-around pt-4 pb-8 w-full ">
+        <div className="flex flex-row flex-wrap items-start justify-around py-8 w-full border-white border-2 m-4 rounded">
             {renderAboutSections()}
-            <div className="w-full flex flex-row items-center justify-center mt-8">
-                <p className="text-4xl mb-24">Let's Get Strong AF</p>
+            <div className="w-full flex flex-row items-center justify-center mt-8 ">
+                <p className="text-4xl text-white ">Let's Get Strong AF</p>
             </div>
         </div>
     )

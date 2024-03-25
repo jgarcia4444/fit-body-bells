@@ -97,10 +97,12 @@ const Questionnaire = ({questions, submitQuestionnaire}) => {
             (
                 <div className="w-full flex flex-col items-center">
                     <div className="w-3/4 md:w-2/3">
-                        <h1 className="text-3xl ">Starter Questionnaire</h1>
+                        <h1 className="text-4xl text-white ">Starter Questionnaire</h1>
                     </div>
-                    <div className="w-3/4 md:w-2/3">
-                        <InformationPrompt label={labels[questionIndex]} promptType={questionnaireInputs[questionIndex].key} />
+                    <div className="w-3/4 md:w-2/3  ">
+                        <div className="border-2 border-white rounded p-2 mb-2">
+                            <InformationPrompt label={labels[questionIndex]} promptType={questionnaireInputs[questionIndex].key} />
+                        </div>
                         <QuestionnaireActionButtons showSubmit={showSubmit} nextPress={handleNextPress} previousPress={handlePreviousPress}  />
                     </div>
                 </div>
