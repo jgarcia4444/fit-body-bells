@@ -31,13 +31,14 @@ const submitQuestionnaire = info => {
             }
         )
         .then((res) => {
-            console.log("Success!", res.status, res.text)
+            console.log("Success!", res.status, res.text);
+            return dispatch({type: "QUESTIONNAIRE_SUBMITTED"});
         },
         (err) => {
             console.log("Failed...", err)
         }
         )
-        return dispatch({type: "SUBMIT_QUESTIONNAIRE"});
+        
     }
 }
 // public key = rqyV6YA0V16NPoeVX

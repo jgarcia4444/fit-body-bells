@@ -26,6 +26,11 @@ const initialState = {
 const questionsReducer = (state=initialState, action) => {
 
     switch(action.type) {
+        case "SUBMITTING_FORM":
+            return {
+                ...state,
+                loading: true,
+            }
         case "UPDATE_TIME_UNIT":
             return {
                 ...state,
@@ -34,10 +39,11 @@ const questionsReducer = (state=initialState, action) => {
                     timeUnit: action.newValue,
                 }
             }
-        case "SUBMIT_QUESTIONNAIRE":
+        case "QUESTIONNAIRE_SUBMITTED":
             return {
                 ...state,
                 formSubmitted: true,
+                loading: false,
             }
         case "UPDATE_STRUGGLES":
             return {
