@@ -10,7 +10,7 @@ import Home from "./Pages/Home";
 
 function App() {
   return (
-    <div className="App bg-black">
+    <div className="App bg-black h-screen w-screen">
       <Router>
         <Routes>
           <Route path="/info-form" element={<Questionnaire/>}/>

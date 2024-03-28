@@ -19,7 +19,7 @@ const About = () => {
     };
 
     return (
-        <div className="flex flex-row flex-wrap items-start justify-around py-8 w-full border-white border-2 m-4 rounded">
+        <div className="flex flex-row flex-wrap items-start justify-around py-8 w-full border-white border-2 mb-24 md:m-4 md:mb-12 rounded">
             {renderAboutSections()}
             <div className="w-full flex flex-row items-center justify-center mt-8 ">
                 <p className="text-4xl text-white ">Let's Get Strong AF</p>
