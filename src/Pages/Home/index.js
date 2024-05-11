@@ -16,7 +16,7 @@ const Home = () => {
     },[])
 
     return (
-        <div className={`h-full w-full flex flex-row flex-wrap items-center justify-center duration-1000 transition-all overflow-y-auto ${viewOpacity}`}>
+        <div className={`h-full w-full flex flex-row flex-wrap items-center justify-center duration-1000 transition-all overflow-y-auto ${viewOpacity} relative`}>
             <Header />
             <About />
             <HomeBottomCTA />
