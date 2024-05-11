@@ -12,18 +12,18 @@ const About = () => {
         return aboutInfo.map((aboutDetails, i) => {
             return (
                 <div key={`about details-${i}`} className=" px-4 py-2 w-full  md:w-1/3  overflow-y-auto md:rounded-lg flex flex-col items-center justify-center md:justify-start my-2 md:my-0 transition-all duration-300 ">
-                    <p className="text-white font-sans font-thin text-lg ">{aboutDetails}</p>
+                    <p className="text-white font-sans font-thin text-lg md:text-lg ">{aboutDetails}</p>
                 </div>
             )
         })
     };
 
     return (
-        <div className="flex flex-row flex-wrap items-start justify-around py-8 w-full border-white border-2 mb-24 md:m-4 md:mb-12 rounded">
-            {renderAboutSections()}
-            <div className="w-full flex flex-row items-center justify-center mt-8 ">
-                <p className="text-4xl text-white ">Let's Get Strong AF</p>
+        <div className="flex flex-row flex-wrap items-start justify-around py-8 w-full mb-24 md:m-4 md:mb-12 rounded">
+            <div className="w-full px-4 flex flex-row mt-8 ">
+                <p className="text-4xl text-white text-left">Let's Get Strong AF</p>
             </div>
+            {renderAboutSections()}
         </div>
     )
 }
