@@ -100,7 +100,7 @@ const Questionnaire = ({questions, submitQuestionnaire}) => {
                         <h1 className="text-4xl text-white ">Starter Questionnaire</h1>
                     </div>
                     <div className="w-3/4 md:w-2/3  ">
-                        <div className="border-2 border-white rounded p-2 mb-2">
+                        <div className=" rounded p-2 mb-2">
                             <InformationPrompt label={labels[questionIndex]} promptType={questionnaireInputs[questionIndex].key} />
                         </div>
                         <QuestionnaireActionButtons showSubmit={showSubmit} nextPress={handleNextPress} previousPress={handlePreviousPress}  />

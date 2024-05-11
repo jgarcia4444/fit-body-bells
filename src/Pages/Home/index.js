@@ -6,12 +6,12 @@ import HomeBottomCTA from '../../components/Home/HomeBottomCTA';
 
 const Home = () => {
 
-    const [viewOpacity, setViewOpacity] = useState("opacity-0 scale-0")
+    const [viewOpacity, setViewOpacity] = useState("opacity-0")
 
 
     useEffect(() => {
         setTimeout(() => {
-            setViewOpacity("opacity-100 scale-100")
+            setViewOpacity("opacity-100")
         }, 200);
     },[])
 

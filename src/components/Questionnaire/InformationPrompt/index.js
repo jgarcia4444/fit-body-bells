@@ -96,7 +96,7 @@ const InformationPrompt = ({promptType, questions, updateLName, updateFName, upd
     );
 
     const improvePrompt = (
-        <div className="flex flex-row w-full justify-start w-full">
+        <div className="flex flex-row w-full justify-start ">
             <TextInput
                 placeholder={"areas of improvement"}
                 icon={<FiUser color={iconColor} size={iconSize} />}
@@ -109,7 +109,7 @@ const InformationPrompt = ({promptType, questions, updateLName, updateFName, upd
     );
 
     const goalsPrompt = (
-        <div className="flex flex-row w-full justify-start w-full">
+        <div className="flex flex-row w-full justify-start ">
             <TextInput 
                 placeholder={"goals"}
                 icon={<FiList color={iconColor} size={iconSize} />}

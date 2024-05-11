@@ -16,7 +16,7 @@ const Header = () => {
                 <QuestionnareCTA />
             </div>
             <div className="w-1/2 flex flex-col items-center justify-center">
-                <img src={backPose} alt="" className="-z-10" />
+                <img src={backPose} alt="" className="" />
             </div>
             <div className="w-1/4 absolute bottom-2 right-2">
                 <Socials />
